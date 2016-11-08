@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Todo</h2>
+    <ul>
+        {% for task in tasks %}
+				<li>
+					{{ task.content }}
+					<form method="post" action="/task/{{ task.id }}/delete">
+						{% csrf_token %}
+						<input type="submit" value="Delete" />
+					</form>
+				</li>
+        {% endfor %}
+    </ul>
+		<form method="post" action="/task/create">
+			{% csrf_token %}
+			{{ form }}
+			<input type="submit" value="Submit" />
+		</form>
+{% endblock %}
