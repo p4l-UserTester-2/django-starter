@@ -13,3 +13,8 @@
        - "8000:8000"
      depends_on:
        - db
+     environment:
+       DB_NAME: django_starter
+       DB_USER: django_starter
+       DB_PASSWORD: password
+       DB_HOST: db
