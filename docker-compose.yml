@@ -1,20 +1,21 @@
- version: '2'
- services:
-   db:
-     image: postgres
-     environment:
-       POSTGRES_DB: django_starter
-       POSTGRES_USER: django_starter
-       POSTGRES_PASSWORD: password
-   web:
-     build: .
-     command: /bin/sh start.sh
-     ports:
-       - "8000:8000"
-     depends_on:
-       - db
-     environment:
-       DB_NAME: django_starter
-       DB_USER: django_starter
-       DB_PASSWORD: password
-       DB_HOST: db
+version: '2'
+services:
+  db:
+    image: postgres
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: some_password123
+  web:
+    build: .
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      DB_NAME: postgres
+      DB_USER: postgres
+      DB_PASSWORD: some_password123
+      DB_HOST: db

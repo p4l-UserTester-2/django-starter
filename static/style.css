@@ -1,66 +1,32 @@
-html {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-*, *:before, *:after {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: inherit;
-}
-
 body {
   font-family: "San Francisco", "Helvetica Neue", "Lucida Grande", san-serif;
   background: #f7f7f7;
 }
 
-.content {
-  width: 600px;
-  margin: 0px auto;
+.hero {
+  margin-bottom: 30px;
 }
 
-.task-list {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
+.todo-list {
+  padding: 30px;
 }
 
-.task-list li {
-  border-top: solid 1px #ccc;
-  overflow: hidden;
-  font-size: 24px;
+.addTodo {
+  margin-top: 30px;
 }
 
-.task-list li:last-child {
-  border-bottom: solid 1px #ccc;
-}
-
-.task-list li .content {
-  padding: 10px;
-  display: block;
-}
-
-.task-list li .delete-form {
-  float: right;
-  width: 50px;
-  margin-top: 8px;
-}
-
-.submit-view {
-  padding: 10px;
-}
-
-.submit-view label {
+.addTodo label {
   display: none;
 }
 
-.submit-view textarea {
+.addTodo textarea {
   width: 100%;
   height: 50px;
   padding: 10px;
   resize: vertical;
- font-size: 18px;
+  font-size: 18px;
 }
-.submit-view input{
+
+.addTodo input{
   font-size: 18px;
 }
