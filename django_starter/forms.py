@@ -6,5 +6,5 @@ class TaskForm(ModelForm):
     model = Task
     fields = ['content']
     widgets = {
-      'content': TextInput(attrs={'autofocus': 'autofocus'}),
+      'content': TextInput(attrs={'autofocus': 'autofocus', 'placeholder': 'Add a Todo!'}),
     }
