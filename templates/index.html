@@ -1,23 +1,42 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h2>Django Starter: Todo List</h2>
-    <ul class="task-list">
-        {% for task in tasks %}
-				<li>
-					<form method="post" action="/task/{{ task.id }}/delete" class="delete-form">
-						{% csrf_token %}
-						<input type="submit" value="Delete" />
-					</form>
-					<span class="content">{{ task.content }}</span>
-				</li>
-        {% endfor %}
-    </ul>
-		<div class="submit-view">
-			<form method="post" action="/task/create">
-				{% csrf_token %}
-				{{ form }}
-				<input type="submit" value="Submit" />
-			</form>
-		</div>
+  <section class="hero is-dark" id="header">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title">Todo List</h1>
+        <h2 class="subtitle"><em>Submit</em> a new Todo to get started!</h2>
+      </div>
+    </div>
+  </section>
+
+  <div class="container todo-list">
+    {% if tasks|length < 1 %}
+    <p>There are no todos!</p>
+    {% endif %}
+    {% for task in tasks %}
+    <article class="media">
+      <div class="media-content">
+        <div class="content">
+          <p>
+            {{ task.content }}
+          </p>
+        </div>
+      </div>
+      <div class="media-right">
+        <form method="post" action="/task/{{ task.id }}/delete" class="delete-form">
+          {% csrf_token %}
+          <input type="submit" value="Delete" class="button is-danger" />
+        </form>
+      </div>
+    </article>
+    {% endfor %}
+    
+    <form method="post" action="/task/create" class="addTodo">
+      {% csrf_token %}
+      {{ form }}
+      <input type="submit" value="Submit" class="button is-dark is-fullwidth" />
+    </form>
+
+  </div>
 {% endblock %}

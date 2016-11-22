@@ -1,7 +1,19 @@
-FROM django
-ADD ./requirements.txt /django_starter/requirements.txt
-WORKDIR /django_starter
+FROM python:3.4
+
+# Install Postgres Client
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        postgresql-client \
+    && rm -rf /var/lib/apt/lists/*
+
+# Cache Dependency Install
+ADD ./requirements.txt /app/requirements.txt
+WORKDIR /app
 RUN pip install -r ./requirements.txt
-ADD . /django_starter/
+
+# Add Repository
+ADD . /app/
+
+# Run Migrations & Server
 EXPOSE 8000
-CMD [ "sh", "start.sh" ]
+CMD python manage.py migrate && python manage.py runserver 0.0.0.0:8000
