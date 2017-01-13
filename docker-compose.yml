@@ -8,12 +8,10 @@ services:
       POSTGRES_PASSWORD: some_password123
   web:
     build: .
-    volumes:
-      - .:/app
     ports:
       - "8000:8000"
-    depends_on:
-      - db
+    links:
+      - "db"
     environment:
       DB_NAME: postgres
       DB_USER: postgres
