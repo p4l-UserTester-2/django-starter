@@ -17,3 +17,4 @@ services:
       DB_USER: postgres
       DB_PASSWORD: some_password123
       DB_HOST: db
+    command: ["bash", "wait-for-postgres-then-run.sh"]
